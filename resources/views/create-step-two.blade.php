@@ -66,7 +66,7 @@
                                     <a href="{{ route('sellers.create.step.one') }}" class="btn btn-danger pull-right">Back</a>
                                 </div>
                                 <div class="col text-right">
-                                    <button type="submit" class="btn btn-primary">Next</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
                     </div>

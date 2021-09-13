@@ -15,9 +15,9 @@
     </style>
 </head>
 <body >
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar">
         <a class="navbar-brand" href="#">
-          <img src="{{ asset('images/logo.png') }}" width="30" height="30" alt="">
+          <img src="{{ asset('images/logo.png') }}" width="100" height="50" alt="">
         </a>
       </nav>
 <div class="container h-100">
