@@ -2,32 +2,134 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Seller;
 use Illuminate\Http\Request;
 
 class SellerController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the sellers.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $sellers = Seller::all();
+
+        return view('index', compact('sellers'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the step One form for creating a new seller.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createStepOne(Request $request)
     {
-        //We will grab all form data from front-end
-        // do a validation check on existin record
-        //if ok 200, show last page
-        //else return error, don't store, and reflect it on front-end
+        $seller = $request->session()->get('seller');
+
+        return view('create-step-one', compact('seller'));
     }
+
+    /**
+     * Post request to store step One info in session
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postCreateStepOne(Request $request)
+    {
+        //dd($request);
+        $validatedData = $request->validate([
+            'first_name' => 'required|unique:sellers',
+            'last_name' => 'required',
+            'portfolio' => '',
+            'portfolio_content' => '',
+            'online_store' => '',
+            'stores_desc' => '',
+            'quality_level' => '',
+            'experience_level' => '',
+            'business_level' => ''
+        ]);
+
+        if(empty($request->session()->get('seller'))){
+            $seller = new Seller();
+            $seller->fill($validatedData);
+            $request->session()->put('seller', $seller);
+        }else{
+            $seller = $request->session()->get('seller');
+            $seller->fill($validatedData);
+            $request->session()->put('seller', $seller);
+        }
+
+        return redirect()->route('sellers.create.step.two');
+    }
+
+
+    /**
+     * Show the step 2 Form for creating a new seller.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createStepTwo(Request $request)
+    {
+        $seller = $request->session()->get('seller');
+        //dd($seller);
+        return view('create-step-two',compact('seller'));
+    }
+  
+    /**
+     * Post step 2 new seller.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postCreateStepTwo(Request $request)
+    {
+        $validatedData = $request->validate([
+            'quality_level' => '',
+            'experience_level' => '',
+            'business_level' => ''
+        ]);
+  
+        $seller = $request->session()->get('seller');
+        $seller->fill($validatedData);
+        $request->session()->put('seller', $seller);
+  
+        return redirect()->route('sellers.create.step.three');
+    }
+
+
+
+
+    /**
+     * Show the step One Form for creating a new product.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createStepThree(Request $request)
+    {
+        $seller = $request->session()->get('seller');
+        dd($seller);
+  
+        return view('create-step-three',compact('seller'));
+    }
+  
+    /**
+     * Show the step One Form for creating a new product.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postCreateStepThree(Request $request)
+    {   
+        
+        $seller = $request->session()->get('seller');
+        dd($seller);
+        $seller->save();
+  
+        $request->session()->forget('seller');
+  
+        return redirect()->route('sellers.index');
+    }
+
 
     /**
      * Store a newly created resource in storage.
