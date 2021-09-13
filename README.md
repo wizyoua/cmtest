@@ -37,6 +37,8 @@ So when I was at this point, I wanted to make separate tables for Categories and
 
 As I transitioned to the blade file form approach, everything started working together. I was able to make sure the data for seller was stored in a local session variable. The data persisted correctly across both pages of the form and stored the record. I do have a validation checking if a user already made an account, it just uses the built in validation unique key to check table for any previous record with the first name. Once I got the entire form submitting properly, I worked on the final design updates but I did run into some issues with the radio buttons so i just left them all as dropdowns. I would need some extra time to get the color matching up, and also being able to retrieve the correct value from that input group and stored properly. 
 
+One last thing, I did create a dusk test, really simple file just checking if it sees SELLER APPLICATION text on the correct url of the form. 
+
 Overall this project took about 4 hours. 
 
 
