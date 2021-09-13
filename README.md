@@ -21,13 +21,13 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Running this project Laravel
+## Running this project 
 
 1. clone repository to local environment
 2. make sure to run npm install
 3. make sure you have a local database with the name of: cmtest
 4. run php artisan migrate
-5. run php artisan server and visit on http://127.0.0.1:8000/ or whichever url it suggested
+5. run php artisan serve and visit on http://127.0.0.1:8000/ or whichever url it suggested
 
 ## Thought Process
 
