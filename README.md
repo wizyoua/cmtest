@@ -21,43 +21,24 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Running this project Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. clone repository to local environment
+2. make sure to run npm install
+3. make sure you have a local database with the name of: cmtest
+4. run php artisan migrate
+5. run php artisan server and visit on http://127.0.0.1:8000/ or whichever url it suggested
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Thought Process
 
-## Laravel Sponsors
+I started off by thinking about how could I approach this problem using Laravel. On  a sheet of paper, I drew out the diagram, flow and DB items I would need, and also how the overall application should work. I then made a new Laravel project, where I set up the Models, Controllers, and Migrations. 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+So when I was at this point, I wanted to make separate tables for Categories and Sellers, so that we can define a many-to-many relationship between both models and have a pivot table saving the records. I was able to get the relationship established, but I ran into an issue later working on the form. I wasn't able to get the record saved for a Seller that chose a Category. I spent a bit of time working through some issues here, so I did a rollback on the migrations to remove that relationship and just add a category column into Seller table. While implementing Vue for the front-end SPA that would handle the form. I also ran into some issues dealing with building out a Vue form, I would have needed some extra time to work on implementing vuex to handle state and also work through building out a dynamic form. Instead I found a resource online that handled a multi-step form using built in blade files, which looked cleaner and could possibly implement much faster.
 
-### Premium Partners
+As I transitioned to the blade file form approach, everything started working together. I was able to make sure the data for seller was stored in a local session variable. The data persisted correctly across both pages of the form and stored the record. I do have a validation checking if a user already made an account, it just uses the built in validation unique key to check table for any previous record with the first name. Once I got the entire form submitting properly, I worked on the final design updates but I did run into some issues with the radio buttons so i just left them all as dropdowns. I would need some extra time to get the color matching up, and also being able to retrieve the correct value from that input group and stored properly. 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+Overall this project took about 4 hours. 
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
