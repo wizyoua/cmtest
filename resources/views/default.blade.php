@@ -8,7 +8,7 @@
 
     <style>
         body {
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Helvetica', sans-serif;
             background: url("../images/bg-pattern.png");
             height: 90vh;
         }
@@ -16,7 +16,7 @@
 </head>
 <body >
     <nav class="navbar">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           <img src="{{ asset('images/logo.png') }}" width="100" height="50" alt="">
         </a>
       </nav>
