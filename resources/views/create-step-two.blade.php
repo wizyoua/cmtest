@@ -20,7 +20,6 @@
                                     </ul>
                                 </div>
                             @endif
-                            
                             <div class="form-group">
                                 <label for="quality_level">step 1</label> <br>
                                 <select class="form-select" aria-label="Default select example" name="quality_level">

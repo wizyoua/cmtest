@@ -38,19 +38,19 @@ class SellerController extends Controller
      */
     public function postCreateStepOne(Request $request)
     {
+
         //dd($request);
         $validatedData = $request->validate([
             'first_name' => 'required|unique:sellers',
             'last_name' => 'required',
-            'portfolio' => '',
-            'portfolio_content' => '',
-            'online_store' => '',
-            'stores_desc' => '',
-            'quality_level' => '',
-            'experience_level' => '',
-            'business_level' => ''
+            'category_content' => 'nullable',
+            'portfolio' => 'nullable',
+            'portfolio_content' => 'nullable',
+            'online_store' => 'required',
+            'stores_desc' => 'nullable'
         ]);
 
+        //dd($validatedData);
         if(empty($request->session()->get('seller'))){
             $seller = new Seller();
             $seller->fill($validatedData);
@@ -73,7 +73,7 @@ class SellerController extends Controller
     public function createStepTwo(Request $request)
     {
         $seller = $request->session()->get('seller');
-        //dd($seller);
+
         return view('create-step-two',compact('seller'));
     }
   
@@ -93,6 +93,12 @@ class SellerController extends Controller
         $seller = $request->session()->get('seller');
         $seller->fill($validatedData);
         $request->session()->put('seller', $seller);
+
+        //store in Sellers Table
+        $seller->save();    
+
+        $request->session()->forget('seller');
+  
   
         return redirect()->route('sellers.create.step.three');
     }
@@ -108,7 +114,7 @@ class SellerController extends Controller
     public function createStepThree(Request $request)
     {
         $seller = $request->session()->get('seller');
-        dd($seller);
+        //dd($seller);
   
         return view('create-step-three',compact('seller'));
     }

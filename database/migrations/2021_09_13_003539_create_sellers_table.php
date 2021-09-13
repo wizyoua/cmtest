@@ -17,6 +17,7 @@ class CreateSellersTable extends Migration
             $table->id('id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('category_content')->nullable();
             $table->string('portfolio')->nullable();
             $table->boolean('portfolio_content')->nullable();
             $table->boolean('online_store');

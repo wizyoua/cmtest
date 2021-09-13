@@ -12,6 +12,7 @@ class Seller extends Model
     protected $fillable = [
         'first_name',
         'last_name',
+        'category_content',
         'portfolio',
         'portfolio_content',
         'online_store',
@@ -21,8 +22,8 @@ class Seller extends Model
         'business_level'
     ];
 
-    public function categories()
-    {
-        return $this->belongsToMany(Category::class, 'seller_category');
-    }
+    // public function categories()
+    // {
+    //     return $this->belongsToMany(Category::class, 'seller_category');
+    // }
 }
