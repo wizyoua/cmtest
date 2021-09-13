@@ -14,11 +14,8 @@ use App\Http\Controllers\SellerController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('sellers', 'App\Http\Controllers\SellerController@createStepOne')->name('seller.index');
+Route::get('/', 'App\Http\Controllers\SellerController@createStepOne')->name('seller.index');
   
 Route::get('sellers/create-step-one', 'App\Http\Controllers\SellerController@createStepOne')->name('sellers.create.step.one');
 Route::post('sellers/create-step-one', 'App\Http\Controllers\SellerController@postCreateStepOne')->name('sellers.create.step.one.post');
